@@ -1,0 +1,270 @@
+﻿$(document).ready(function(){
+  
+/*
+  $.ajax({url:"/last5torn",dataType:"json",success:function(result){
+          var html = '<div id="multi-draw-container">';
+		  $.each(result, function(i, val) {
+		      html += '<div class="draw-container"><span class="lbl">ΗΜ/ΝΙΑ: </span><span>'+val.drawTime+'</span><span class="lbl"> ΚΛΗΡΩΣΗ: </span><span>'+val.drawNo+'</span><table class="t20"><tr>';
+		      
+		      html += '<td>';
+		      html += val.Num1;
+		      html += '</td><td>';
+		      html += val.Num2;
+		      html += '</td><td>';
+		      html += val.Num3
+		      html += '</td><td>';
+		      html += val.Num4
+		      html += '</td><td>';
+		      html += val.Num5
+		      html += '</td><td>';
+		      html += val.Num6
+		      html += '</td><td>';
+		      html += val.Num7
+		      html += '</td><td>';
+		      html += val.Num8
+		      html += '</td><td>';
+		      html += val.Num9
+		      html += '</td><td>';
+		      html += val.Num10
+		      html += '</td><td>';
+		      html += val.Num11
+		      html += '</td><td>';
+		      html += val.Num12
+		      html += '</td><td>';
+		      html += val.Num13
+		      html += '</td><td>';
+		      html += val.Num14
+		      html += '</td><td>';
+		      html += val.Num15
+		      html += '</td><td>';
+		      html += val.Num16
+		      html += '</td><td>';
+		      html += val.Num17
+		      html += '</td><td>';
+		      html += val.Num18
+		      html += '</td><td>';
+		      html += val.Num19
+		      html += '</td><td>';
+		      html += val.Num20
+		      html += '</td>';
+		      html += '</tr></table></div>';
+		  });
+      html += '</div>';
+      $("#kino-main").html(html);
+      $(".art-postheadericon").empty().html("ΚΛΗΡΩΣΕΙΣ");
+    },
+	error: function(xhr,z,thrownError){
+        alert(xhr.status);
+        alert(thrownError);
+		alert(xhr.responseText);
+		
+    }
+    });
+*/  
+  $(".kino-home").click(function(e){
+//    e.preventDefault();
+/*	$.ajax({url:"last5torn",dataType:"json",success:function(result){
+          var html = '<div id="multi-draw-container">';
+		  $.each(result, function(i, val) {
+			html += '<div class="draw-container"><span class="lbl">ΗΜ/ΝΙΑ: </span><span>'+val.drawTime+'</span><span class="lbl"> ΚΛΗΡΩΣΗ: </span><span>'+val.drawNo+'</span><table class="t20"><tr>';
+		      html += '<td>';
+		      html += val.Num1;
+		      html += '</td><td>';
+		      html += val.Num2;
+		      html += '</td><td>';
+		      html += val.Num3
+		      html += '</td><td>';
+		      html += val.Num4
+		      html += '</td><td>';
+		      html += val.Num5
+		      html += '</td><td>';
+		      html += val.Num6
+		      html += '</td><td>';
+		      html += val.Num7
+		      html += '</td><td>';
+		      html += val.Num8
+		      html += '</td><td>';
+		      html += val.Num9
+		      html += '</td><td>';
+		      html += val.Num10
+		      html += '</td><td>';
+		      html += val.Num11
+		      html += '</td><td>';
+		      html += val.Num12
+		      html += '</td><td>';
+		      html += val.Num13
+		      html += '</td><td>';
+		      html += val.Num14
+		      html += '</td><td>';
+		      html += val.Num15
+		      html += '</td><td>';
+		      html += val.Num16
+		      html += '</td><td>';
+		      html += val.Num17
+		      html += '</td><td>';
+		      html += val.Num18
+		      html += '</td><td>';
+		      html += val.Num19
+		      html += '</td><td>';
+		      html += val.Num20
+		      html += '</td>';
+		      html += '</tr></table></div>';
+		  });
+		  html += '</div>';
+            $("#kino-main").html(html);
+	    $(".art-postheadericon").empty().html("ΚΛΗΡΩΣΕΙΣ");
+    },
+	error: function(xhr,z,thrownError){
+            alert(xhr.status);
+            alert(thrownError);
+	    alert(xhr.responseText);
+		
+	}
+      });
+*/
+      $("a.active").removeClass("active");
+      $(this).addClass("active");
+      $(".sub").removeClass("active");
+  });
+  $(".kino-stats").click(function(e){
+    e.preventDefault();
+	$("#kino-main").empty().html("TEST");
+	$(".art-postheadericon").empty().html("ΣΤΑΤΙΣΤΙΚΑ");
+	$("a.active").removeClass("active");
+	$(this).addClass("active");
+	$(this).next().addClass("active");
+  });
+  $(".kino-top").click(function(e){
+      e.preventDefault();
+      $("#kino-main").empty().html("Under Construction");
+      $(".art-postheadericon").empty().html("ΣΤΑΤΙΣΤΙΚΑ");
+      $("a.active").removeClass("active");
+      $(this).addClass("active");
+  });
+  $(".kino-delay").click(function(e){
+      e.preventDefault();
+      $("#kino-main").empty().html("Under Construction");
+      $("a.active").removeClass("active");
+      $(this).addClass("active");
+  });
+  $(".kino-full").click(function(e){
+//      e.preventDefault();
+//      var html = '<div id="chart_div" style="width: 900px; height: 500px;"></div>';
+//      $("#kino-main").empty().html(html);
+      $("a.active").removeClass("active");
+      $(this).addClass("active");
+  });
+
+  $(".kino-fill").click(function(e){
+//    e.preventDefault();
+//	$("#kino-main").empty().html("Under Construction");
+	$(".art-postheadericon").empty().html("ΣΥΜΠΛΗΡΩΣΗ ΔΕΛΤΙΟΥ");
+	$("a.active").removeClass("active");
+	$(this).addClass("active");
+	$(".sub").removeClass("active");
+  });
+
+  $(".kino-check").click(function(e){
+//      e.preventDefault();
+/*
+      $("#kino-main").empty().html("Under Construction");
+      $(".art-postheadericon").empty().html("ΕΛΕΓΧΟΣ ΕΠΙΤΥΧΙΑΣ");
+      $.ajax({url:"check.html",dataType:"html",success:function(result){ 	
+	  $("#kino-main").html(result); 			
+	  $("#cpn").focus(function(){if($(this).val()=="(χωρίς το *)"){$(this).val("")}});
+	  $("#cpn").blur(function(){if($(this).val()==""){$(this).val("(χωρίς το *)")}a()});
+	  $("#drawid").focus(function(){if($(this).val()==""){$(this).val("")}});
+	  $("#drawid").blur(function(){if($(this).val()==""){$(this).val("")}a()});
+	  $("#crc").focus(function(){
+	      if($(this).val()=="(εισαγωγή με λατιν. χαρακτ.)"){
+		  $(this).val("")}});
+	  $("#crc").blur(function(){
+	      if($(this).val()==""){
+		  $(this).val("(εισαγωγή με λατιν. χαρακτ.)")}
+	      a()});
+	  $("#gameid").change(function(){a()});
+	  $("#check-winnings-button").click(function(){
+	      if(a()){
+		  var b="check/http://www.opap.gr/el/web/guest/find-winnings2%3Fp_p_id=opapwinningresults_WAR_CheckWinningsResultportlet_INSTANCE_F3mh&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&p_p_col_id=_118_INSTANCE_83Ib__column-2&p_p_col_count=1&cpn="+$("#cpn").val()+"&crc="+parseInt($("#crc").val(),16)+"&drawid="+$("#drawid").val()+"&teamno="+$("#teamno option:selected").val()+"&gameid="+$("#gameid option:selected").val();
+		  $.ajax({url:b,dataType:"json",success:function(c){
+		      var html = c.html;
+		      showCheckWinningsDialog(html);
+		  },
+		  error:function(c){
+		      alert("Haris")
+		      alert(c.responseText)
+		  }
+		  })
+	      }
+	  });
+	  function a(){
+	      var b=false;
+	      if($.trim($("#cpn").val()).length!=0
+		 &&
+		 $("#cpn").val()!="(χωρίς το *)"
+		 &&
+		 $.trim($("#drawid").val()).length!=0
+		 &&
+		 $("#drawid").val()!=""
+		 &&
+		 $.trim($("#crc").val()).length!=0
+		 &&
+		 $("#crc").val()!="(εισαγωγή με λατιν. χαρακτ.)"
+		 &&
+		 $.trim($("#teamno option:selected").val()).length!=0
+		 &&
+		 $.trim($("#gameid option:selected").val()).length!=0){
+		  b=true}
+	      if(b){
+		  $("#check-winnings-button").removeAttr("disabled")}
+	      else{
+		  $("#check-winnings-button").attr("disabled","disabled")}
+	      return b}
+	  showCheckWinningsDialog=function(b){
+	      var c=$('<div id="check-winnings-main-content"></div>').html(b).dialog({
+		  autoOpen:true,title:"ΕΥΡΕΣΗ ΕΠΙΤΥΧΙΩΝ - ΚΕΡΔΩΝ",height:350,width:704,resizable:false,modal:true})};
+	  PreviewImage=function(c,b){
+	      imageDialog=$("#dialog");
+	      imageTag=$("#image");
+	      uriParts=c.split("/");
+	      imageTag.attr("src",c);
+	      if(!$("#badialog").is(":data(dialog)")){
+		  imageDialog=$("<div></div>").html('<img src="'+c+'">').dialog({
+		      autoOpen:true,title:b,height:600,width:610,resizable:false,modal:true})}
+	      else{imageDialog.dialog("open")}};
+      }, 			
+	      error: function(xhr,z,thrownError){ 			
+		  alert(xhr.status); 			
+		  alert(thrownError); 			
+		  alert(xhr.responseText); 			
+	      }
+      });       
+*/
+      $("a.active").removeClass("active");
+      $(this).addClass("active");
+      $(".sub").removeClass("active");
+  });
+
+  $(".kino-rules").click(function(e){
+//    e.preventDefault();
+	$(".art-postheadericon").empty().html("ΚΑΝΟΝΕΣ");
+
+//        $.ajax({url:"rules.html",dataType:"html",success:function(result){ 	
+//		
+//	    $("#kino-main").html(result); 			
+//	    $("#tabs ul li a").removeClass(); 			
+//	    $("#tabs").tabs(); 			
+//	    $('li').css('overflow-x', 'hidden'); 			
+//	    $(".ui-widget ul *").css("font-size", "10px"); 			
+//	    }, 			
+//	    error: function(xhr,z,thrownError){ 			
+//		alert(xhr.status); 			
+//		alert(thrownError); 			
+//		alert(xhr.responseText); 			
+//	    } 			
+//	}); 
+	$("a.active").removeClass("active");
+	$(this).addClass("active");
+	$(".sub").removeClass("active");
+  });
+}); 

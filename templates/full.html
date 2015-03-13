@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block main %}
+<html>
+  <head>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+      $("#kino-main").empty();
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+      var data = google.visualization.arrayToDataTable({{stats}});
+
+      var options = {
+      colorAxis: {colors: ['green', 'yellow', 'red']},
+      sizeAxis: {maxSize: 9}
+      };
+
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('kino-main'));
+      chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
+
+{% end block %}

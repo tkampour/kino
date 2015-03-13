@@ -1,0 +1,7 @@
+CREATE DATABASE Kino;
+
+CREATE USER 'tkampour'@'localhost' IDENTIFIED BY 'github';
+
+USE Kino;
+
+GRANT ALL ON Kino.* to 'tkampour'@'localhost';

@@ -1,0 +1,41 @@
+﻿{% extends "index.html" %}
+
+{% block main %}
+
+
+<script type="text/javascript">
+	function num80(){
+		var html = '<div class="cont80"><table id="t80">';
+		for (i=1;i<=80;i++){
+			if (i % 10 == 1){
+				html += '<tr>';
+			}
+			html += '<td class="off">'+i+'</td>';
+			if (i % 10 == 0){
+				html += '</tr>';
+			}
+		}
+		html += '</table></div>';
+		html += '<div id=1> Oi 12 pio syxna emfanizomenoi arithmoi: {{most[0].Number}} {{most[1].Number}} {{most[2].Number}} {{most[3].Number}} {{most[4].Number}} {{most[5].Number}} {{most[6].Number}} {{most[7].Number}} {{most[8].Number}} {{most[9].Number}} {{most[10].Number}} {{most[11].Number}} </div>';
+		return html;
+	}
+	$(document).ready(function(){
+		$("#kino-main").html(num80());
+		$(".art-postheadericon").empty().html("ΣΥΜΠΛΗΡΩΣΗ ΔΕΛΤΙΟΥ");
+		$("#t80").on("click",".off",function(){
+			$(this).switchClass( "off", "on", 300);
+			alert($(this).html());
+		});
+  
+		$("#t80").on("click",".on",function(){
+			$(this).switchClass( "on", "off", 300);
+			setTimeout(function (){
+				$(".on").each(function(){
+					alert($(this).html());
+				});
+			}, 300);	
+		});
+	});
+</script>
+
+{% end block %}

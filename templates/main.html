@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+
+{% block main %}
+<script type="text/javascript">
+   $(document).ready(function(){
+	$.ajax({url:"last5torn",dataType:"json",success:function(result){
+          var html = '<div id="multi-draw-container">';
+		  $.each(result, function(i, val) {
+			html += '<div class="draw-container"><span class="lbl">ΗΜ/ΝΙΑ: </span><span>'+val.drawTime+'</span><span class="lbl"> ΚΛΗΡΩΣΗ: </span><span>'+val.drawNo+'</span><table class="t20"><tr>';
+		      html += '<td>';
+		      html += val.Num1;
+		      html += '</td><td>';
+		      html += val.Num2;
+		      html += '</td><td>';
+		      html += val.Num3
+		      html += '</td><td>';
+		      html += val.Num4
+		      html += '</td><td>';
+		      html += val.Num5
+		      html += '</td><td>';
+		      html += val.Num6
+		      html += '</td><td>';
+		      html += val.Num7
+		      html += '</td><td>';
+		      html += val.Num8
+		      html += '</td><td>';
+		      html += val.Num9
+		      html += '</td><td>';
+		      html += val.Num10
+		      html += '</td><td>';
+		      html += val.Num11
+		      html += '</td><td>';
+		      html += val.Num12
+		      html += '</td><td>';
+		      html += val.Num13
+		      html += '</td><td>';
+		      html += val.Num14
+		      html += '</td><td>';
+		      html += val.Num15
+		      html += '</td><td>';
+		      html += val.Num16
+		      html += '</td><td>';
+		      html += val.Num17
+		      html += '</td><td>';
+		      html += val.Num18
+		      html += '</td><td>';
+		      html += val.Num19
+		      html += '</td><td>';
+		      html += val.Num20
+		      html += '</td>';
+		      html += '</tr></table></div>';
+		  });
+		  html += '</div>';
+            $("#kino-main").html(html);
+	    $(".art-postheadericon").empty().html("ΚΛΗΡΩΣΕΙΣ");
+    },
+	error: function(xhr,z,thrownError){
+            alert(xhr.status);
+            alert(thrownError);
+	    alert(xhr.responseText);
+		
+	}
+      });
+});
+</script>
+{% end block %}

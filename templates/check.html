@@ -1,0 +1,107 @@
+{% extends "index.html" %}
+
+{% block main %}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $(".art-postheadericon").empty().html("ΕΛΕΓΧΟΣ ΕΠΙΤΥΧΙΑΣ");
+	  $("#cpn").focus(function(){if($(this).val()=="(χωρίς το *)"){$(this).val("")}});
+	  $("#cpn").blur(function(){if($(this).val()==""){$(this).val("(χωρίς το *)")}a()});
+	  $("#drawid").focus(function(){if($(this).val()==""){$(this).val("")}});
+	  $("#drawid").blur(function(){if($(this).val()==""){$(this).val("")}a()});
+	  $("#crc").focus(function(){
+	      if($(this).val()=="(εισαγωγή με λατιν. χαρακτ.)"){
+		  $(this).val("")}});
+	  $("#crc").blur(function(){
+	      if($(this).val()==""){
+		  $(this).val("(εισαγωγή με λατιν. χαρακτ.)")}
+	      a()});
+	  $("#gameid").change(function(){a()});
+	  $("#check-winnings-button").click(function(){
+	      if(a()){
+		  var b="check/http://www.opap.gr/el/web/guest/find-winnings2%3Fp_p_id=opapwinningresults_WAR_CheckWinningsResultportlet_INSTANCE_F3mh&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&p_p_col_id=_118_INSTANCE_83Ib__column-2&p_p_col_count=1&cpn="+$("#cpn").val()+"&crc="+parseInt($("#crc").val(),16)+"&drawid="+$("#drawid").val()+"&teamno="+$("#teamno option:selected").val()+"&gameid="+$("#gameid option:selected").val();
+		  $.ajax({url:b,dataType:"json",success:function(c){
+		      var html = c.html;
+		      showCheckWinningsDialog(html);
+		  },
+		  error:function(c){
+		      alert("Haris")
+		      alert(c.responseText)
+		  }
+		  })
+	      }
+	  });
+	  function a(){
+	      var b=false;
+	      if($.trim($("#cpn").val()).length!=0
+		 &&
+		 $("#cpn").val()!="(χωρίς το *)"
+		 &&
+		 $.trim($("#drawid").val()).length!=0
+		 &&
+		 $("#drawid").val()!=""
+		 &&
+		 $.trim($("#crc").val()).length!=0
+		 &&
+		 $("#crc").val()!="(εισαγωγή με λατιν. χαρακτ.)"
+		 &&
+		 $.trim($("#teamno option:selected").val()).length!=0
+		 &&
+		 $.trim($("#gameid option:selected").val()).length!=0){
+		  b=true}
+	      if(b){
+		  $("#check-winnings-button").removeAttr("disabled")}
+//	      else{
+//		  $("#check-winnings-button").attr("disabled","disabled")}
+	      return b}
+	  showCheckWinningsDialog=function(b){
+	      var c=$('<div id="check-winnings-main-content"></div>').html(b).dialog({
+		  autoOpen:true,title:"ΕΥΡΕΣΗ ΕΠΙΤΥΧΙΩΝ - ΚΕΡΔΩΝ",height:350,width:704,resizable:false,modal:true})};
+	  PreviewImage=function(c,b){
+	      imageDialog=$("#dialog");
+	      imageTag=$("#image");
+	      uriParts=c.split("/");
+	      imageTag.attr("src",c);
+	      if(!$("#badialog").is(":data(dialog)")){
+		  imageDialog=$("<div></div>").html('<img src="'+c+'">').dialog({
+		      autoOpen:true,title:b,height:600,width:610,resizable:false,modal:true})}
+	      else{imageDialog.dialog("open")}};
+  });
+</script>
+
+<div style="" class="portlet-borderless-container" id="aui-3-2-0PR1-1304">
+  <div class="portlet-body" id="aui-3-2-0PR1-1303"> 
+    <div class="module rightmodule" id="aui-3-2-0PR1-1302"> 
+      <div id="check-winnings-header"> <div class="header_font">ΕΥΡΕΣΗ ΕΠΙΤΥΧΙΩΝ - ΚΕΡΔΩΝ</div> </div> <div class="modulebody" id="aui-3-2-0PR1-1301"> <div class="dialogi_result" style="display: block;" id="aui-3-2-0PR1-1338"> <div class="check-winnings-out-layout" id="aui-3-2-0PR1-1337"> <div class="check-winnings-out-inner-layout" id="aui-3-2-0PR1-1336"> <form id="aui-3-2-0PR1-1335"> 
+<a href="#" title="Απόδειξη Δελτίου" id="questionImage" onclick="javascript:PreviewImage(&quot;/static/images/CheckWinnings_GR.jpg&quot;, &quot;Απόδειξη Δελτίου&quot;);return false;"><img align="right" src="/static/images/erwtimatiko.png"><span>Πού θα βρω τα παρακάτω στοιχεία;</span></a> <br> <div> <div class="names">Αριθμός Δελτίου</div> 
+<div class="check-winnings-fields"> 
+  <input type="text" value="(χωρίς το *)" id="cpn" name="cpn" class="input-order" autocomplete="on"> </div> 
+<div class="clearBoth"></div> </div> <div id="aui-3-2-0PR1-1389"> <div class="names">ΚΛ/ΚΑΤ ή Α.Δ.</div> <div class="check-winnings-fields" id="aui-3-2-0PR1-1386"> 
+<input type="text" value="" id="drawid" name="drawid" class="input-order" autocomplete="on"> </div> <div class="clearBoth"></div> </div> <div> <div class="names">Κωδικός Ελέγχου</div> <div class="check-winnings-fields"> 
+<input type="text" value="(εισαγωγή με λατιν. χαρακτ.)" title="Εισάγετε 8 χαρακτήρες" maxlength="8" id="crc" name="crc" class="input-order" autocomplete="on"> 
+</div> <div class="clearBoth"></div> </div> <div id="aui-3-2-0PR1-1334"> <div class="names">Α/Α Ομαδικού</div> <div class="check-winnings-fields" id="aui-3-2-0PR1-1333"> <select id="teamno" name="teamno" class="input-order"> <option value="0">0</option> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> 
+<option value="4">4</option> 
+<option value="5">5</option> 
+<option value="6">6</option> 
+<option value="7">7</option> 
+<option value="8">8</option> 
+<option value="9">9</option> 
+<option value="10">10</option> 
+<option value="11">11</option> 
+<option value="12">12</option> 
+<option value="13">13</option> 
+<option value="14">14</option> 
+<option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> </select> </div> <div class="clearBoth"></div> </div> <div> 
+<div class="names">Παιχνίδι</div> 
+<div class="check-winnings-fields"> 
+<select id="gameid" name="gameid" class="input-order"> 
+<option value="">Επιλέξτε</option> 
+<option value="5103">ΛΟΤΤΟ</option> <option value="5104">ΤΖΟΚΕΡ</option> <option value="1100" selected>KINO</option> <option value="2101">ΠΡΟΤΟ</option> <option value="5106">EXTRA 5</option> <option value="2100">SUPER 3</option> <option value="3100">ΠΡΟΠΟ -ΚΥΡ</option> <option value="3101">ΠΡΟΠΟ -ΤΕΤ</option> <option value="3102">ΠΡΟΠΟ -ΣΑΒ</option> <option value="5105">ΠΡΟΠΟΓΚΟΛ</option> <option value="4100">ΣΤΟΙΧΗΜΑ</option> 
+<option value="10101">RACES</option> 
+<option value="8100">POWERSPIN</option> <option value="8101">BOWLING</option> <option value="8102">PENALTIES</option> </select> </div> <div class="clearBoth"></div> </div> <div class="check-row"></div> <div id="check-results-button"> <center>
+<input type="button" /*disabled="disabled"*/ value="Έλεγχος Αποτελεσμάτων" id="check-winnings-button"></center> </div> </form> </div> </div> </div> <div class="dialogi" id="aui-3-2-0PR1-1300"> <div class="dialogi_banner"></div> <p>Μπορείτε να κάνετε έλεγχο επιτυχιών και κερδών στα δελτία σας, χωρίς να χρειάζεται να εγκαταστήσετε τίποτε στον υπολογιστή σας.</p> 
+<p>Επισημαίνεται ότι η πιστοποίηση της ορθής συμπλήρωσης των δελτίων, καθώς και η εύρεση επιτυχιών και των κερδών, γίνεται αποκλειστικά και μόνο από τις τερματικές μηχανές των πρακτορείων, σύμφωνα με τους όρους συμμετοχής σε κάθε παιχνίδι. Η χρήση της εφαρμογής, δεν υποκαθιστά τις τερματικές μηχανές πρακτορείου αλλά έχει ως σκοπό την εξοικείωση των παικτών με τη συμπλήρωση των δελτίων και την πληροφόρησή τους σε σχέση με τις ενδεχόμενες επιτυχίες και τα κέρδη τους. </p>
+
+</div> </div> </div> </div> </div>
+
+{% end block %}
